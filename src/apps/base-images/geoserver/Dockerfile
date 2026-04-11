@@ -44,9 +44,9 @@ RUN mkdir -p /opt/app/data_directory /data/geowebcache \
 && chmod 0777 /opt/app/data_directory /data/geowebcache
 
 WORKDIR /opt/app/bin
-COPY --from=builder dependencies/ ./
+COPY --from=builder lib/ ./
 COPY --from=builder snapshot-dependencies/ ./
-COPY --from=builder spring-boot-loader/ ./
+COPY --from=builder application/ ./
 #see https://github.com/moby/moby/issues/37965
 RUN true
 COPY --from=builder application/ ./

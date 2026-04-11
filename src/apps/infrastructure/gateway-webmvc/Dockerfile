@@ -12,9 +12,9 @@ RUN java -Djarmode=tools -jar application.jar extract --layers --launcher
 FROM $REPOSITORY/gs-cloud-base-spring-boot:$TAG
 # WORKDIR already set to /opt/app/bin
 
-COPY --from=builder dependencies/ ./
+COPY --from=builder lib/ ./
 COPY --from=builder snapshot-dependencies/ ./
-COPY --from=builder spring-boot-loader/ ./
+COPY --from=builder application/ ./
 #see https://github.com/moby/moby/issues/37965
 RUN true
 COPY --from=builder application/ ./

@@ -31,13 +31,13 @@ WORKDIR /opt/app/bin
 EXPOSE 8080
 EXPOSE 8081
 
-COPY --from=builder dependencies/ ./
+COPY --from=builder lib/ ./
 #see https://github.com/moby/moby/issues/37965
 RUN true
 COPY --from=builder snapshot-dependencies/ ./
 #see https://github.com/moby/moby/issues/37965
 RUN true
-COPY --from=builder spring-boot-loader/ ./
+COPY --from=builder application/ ./
 
 HEALTHCHECK \
 --interval=10s \
